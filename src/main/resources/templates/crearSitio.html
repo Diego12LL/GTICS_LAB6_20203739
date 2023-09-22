@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+        crossorigin="anonymous">
+  <title>Nuevo Sitio</title>
+</head>
+<body class="container">
+<div class="container">
+  <h2>Nuevo Sitio</h2>
+  <hr/>
+  <form method="post" th:action="@{/guardarSitio}">
+    <div class="mb-3">
+      <label for="nombresitio">Nombre</label>
+      <input name="nombresitio" type="text" class="form-control" id="nombresitio">
+    </div>
+
+    <div class="mb-3">
+      <label for="locacion" class="form-label">Locación</label>
+      <select name="locacion" class="form-select" id="locacion">
+        <option th:each="locacion : ${listaPaises}" th:text="${locacion.nombrepais}"
+                th:value="${locacion.getIdlocacion()}"></option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="fechainstalacion">Fecha de instalación</label>
+      <input name="fechainstalacion" type="text" class="form-control" id="fechainstalacion">
+    </div>
+
+
+    <div class="mb-3">
+      <label for="latitud">Latitud</label>
+      <input name="latitud" type="text" class="form-control" id="latitud">
+    </div>
+
+    <div class="mb-3">
+      <label for="longitud">Longitud</label>
+      <input name="longitud" type="text" class="form-control" id="longitud">
+    </div>
+
+    <a th:href="@{/listaSitios}" class="btn btn-danger">Cancelar</a>
+    <button type="submit" class="btn btn-primary">Registrar</button>
+  </form>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
+</html>

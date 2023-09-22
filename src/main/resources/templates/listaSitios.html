@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+        crossorigin="anonymous">
+  <title>Lista de sitios</title>
+</head>
+<body>
+
+
+
+<div class="container">
+
+  <div claaa="row">
+    <a class="btn btn-primary mt-4 mb-4" th:href="@{/listaEmpleados}">Sitios</a>
+    <a class="btn btn-primary mt-4 mb-4" th:href="@{/listaEmpleados}">Equipos</a>
+    <a class="btn btn-primary mt-4 mb-4" th:href="@{/reportesMenu}">Estadísticas</a>
+  </div>
+
+  <h2>Lista de Sitios</h2>
+  <div claaa="row">
+    <a class="btn btn-primary mt-4 mb-4" th:href="@{/crearSitio}">Nuevo Sitio</a>
+  </div>
+  <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+
+
+  <table class="table table-sm">
+    <tr>
+      <th>Nombre</th>
+      <th>Locación</th>
+      <th>Fecha de Instalación</th>
+      <th>Latitud</th>
+      <th>Longitud</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr th:each="sitio, info: ${listaSitios}">
+
+      <td th:text="${sitio.getNombresitio()}"></td>
+      <td th:text="${sitio.getLocacion().getNombreciudad()}"></td>
+      <td th:text="${sitio.getFechainstalacion()}"></td>
+      <td th:text="${sitio.getLatitud()}"></td>
+      <td th:text="${sitio.getLongitud()}"></td>
+
+      <td><a class="btn btn-primary" th:href="@{'/editarSitio?id=' + ${sitio.idsitio}}">Editar</a></td>
+      <td><a class="btn btn-danger" th:href="@{'/borrarSitio?id=' + ${sitio.idsitio}}">Borrar</a></td>
+    </tr>
+  </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
+</body>
+</html>
+
